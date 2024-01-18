@@ -9,17 +9,27 @@ class ActionButton extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenSize = MediaQuery.of(context).size;
     return InkWell(
-      onTap: (){
-        debugPrint('Button pressed');},
-      child: Container(
-        height: screenSize.width/15,
-        width: screenSize.width/2.5,
-        child: Center(child: Text(text, style: TextStyle(fontSize: 16, color: Colors.white),)),
-        decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(10),
-                  color: Colors.blue,
-                ),
-      ),
-    );
+        onTap: () {
+          debugPrint('Button pressed');
+        },
+        child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            gradient: const LinearGradient(
+                end: Alignment.centerLeft,
+                begin: Alignment.centerRight,
+                colors: [
+                  Color(0xff4681E0),
+                  Color(0xff5E1CE8),
+                ]),
+          ),
+          height: screenSize.width / 12,
+          width: screenSize.width / 2.5,
+          child: Center(
+              child: Text(
+            text,
+            style: const TextStyle(fontSize: 16, color: Colors.white),
+          )),
+        ));
   }
 }
