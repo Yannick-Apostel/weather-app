@@ -45,7 +45,7 @@ class HomeBody extends StatelessWidget {
             ),
             Container(
               child: const Text("23°C",
-                  style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                  style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold)),
             ),
             Container(
               child: const Text("Rain",
@@ -54,7 +54,6 @@ class HomeBody extends StatelessWidget {
             const SizedBox(
               height: 40,
             ),
-            
             const SizedBox(
               height: 40,
             ),
