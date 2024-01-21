@@ -13,7 +13,7 @@ class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
       emit(WeatherLoading());
       try {
         Position currentPosition =  await Geolocator.getCurrentPosition();
-          WeatherFactory wf = new WeatherFactory(API_KEY, language: Language.ENGLISH);
+          WeatherFactory wf =  WeatherFactory(API_KEY, language: Language.ENGLISH);
         Weather w = await wf.currentWeatherByLocation(currentPosition.latitude, currentPosition.longitude);
         emit(WeatherSuccess(w));
       } catch (e) {
