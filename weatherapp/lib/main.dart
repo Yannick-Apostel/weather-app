@@ -15,9 +15,24 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      home: BlocProvider(
-        create: (context) => WeatherBloc()..add(GetWeatherData()),
-        child: const HomePage(),
+      home: FutureBuilder(
+        future: _determinePosition(),
+        builder: (context, snap) { 
+          if(snap.hasData){
+            return BlocProvider(
+          create: (context) => WeatherBloc()..add(GetWeatherData()),
+          child: const HomePage(),
+        );
+          }else{
+            return Scaffold(
+              body: Container(
+                child: Text('Loading data...'),
+              ),
+            );
+          }
+          
+         },
+         
       ),
     );
   }
