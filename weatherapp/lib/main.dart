@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:weatherapp/application/bloc/weather_bloc.dart';
 import 'package:weatherapp/presentation/home/homepage.dart';
 import 'package:geolocator/geolocator.dart';
 
@@ -12,8 +14,11 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: HomePage(),
+    return  MaterialApp(
+      home: BlocProvider(
+        create: (context) => WeatherBloc()..add(GetWeatherData()),
+        child: const HomePage(),
+      ),
     );
   }
 }
