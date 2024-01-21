@@ -8,14 +8,17 @@ part 'weather_event.dart';
 part 'weather_state.dart';
 
 class WeatherBloc extends Bloc<WeatherEvent, WeatherState> {
-  WeatherBloc() : super(WeatherInitial())  {
+  WeatherBloc() : super(WeatherInitial()) {
     on<GetWeatherData>((event, emit) async {
       emit(WeatherLoading());
       try {
-        Position currentPosition =  await Geolocator.getCurrentPosition();
-          WeatherFactory wf =  WeatherFactory(API_KEY, language: Language.ENGLISH);
-        Weather w = await wf.currentWeatherByLocation(currentPosition.latitude, currentPosition.longitude);
-        emit(WeatherSuccess(w));
+        Position currentPosition = await Geolocator.getCurrentPosition();
+        WeatherFactory wf = WeatherFactory(API_KEY, language: Language.ENGLISH);
+        Weather w = await wf.currentWeatherByLocation(
+            currentPosition.latitude, currentPosition.longitude);
+        List<Weather> forecast = await wf.fiveDayForecastByLocation(
+            currentPosition.latitude, currentPosition.longitude);
+        emit(WeatherSuccess(w,forecast));
       } catch (e) {
         emit(WeatherFailure());
       }

@@ -25,11 +25,11 @@ class HomePage extends StatelessWidget {
   String getDaytime() {
     TimeOfDay nowTime = TimeOfDay.now();
 
-    if (nowTime.hour >= 4 && nowTime.hour < 12) {
+    if (nowTime.hour >= 0 && nowTime.hour < 12) {
       return 'good morning';
     } else if (nowTime.hour >= 12 && nowTime.hour < 18) {
       return 'good afternoon';
-    }else if (nowTime.hour >= 18 && nowTime.hour < 4) {
+    }else if (nowTime.hour >= 18 && nowTime.hour < 24) {
       return 'good evening';
     } else {
       return 'hello';
