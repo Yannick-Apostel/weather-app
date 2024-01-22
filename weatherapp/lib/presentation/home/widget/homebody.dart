@@ -104,7 +104,7 @@ class HomeBody extends StatelessWidget {
                                         ),
                                       ),
                                       SizedBox(
-                                        height: 10,
+                                        height: 5,
                                       ),
                                       Container(
                                         color: Colors.grey,
@@ -112,9 +112,7 @@ class HomeBody extends StatelessWidget {
                                         height: 40,
                                         child: Text('ICON Placeholder'),
                                       ),
-                                      SizedBox(
-                                        height: 5,
-                                      ),
+                                     
                                       Container(
                                         child: Text(
                                             '${state.weatherList[index].weatherMain}'),
