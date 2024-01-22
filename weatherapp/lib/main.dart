@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:provider/provider.dart';
+import 'package:weatherapp/Theme.dart';
 import 'package:weatherapp/application/bloc/weather_bloc.dart';
+import 'package:weatherapp/application/theme_service.dart';
 import 'package:weatherapp/presentation/home/homepage.dart';
 import 'package:geolocator/geolocator.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context) => ThemeService(),
+    child: const MyApp(),
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,27 +20,30 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
-      home: FutureBuilder(
-        future: _determinePosition(),
-        builder: (context, snap) { 
-          if(snap.hasData){
-            return BlocProvider(
-          create: (context) => WeatherBloc()..add(GetWeatherData()),
-          child: const HomePage(),
-        );
-          }else{
-            return Scaffold(
-              body: Container(
-                child: Text('Loading data...'),
-              ),
-            );
-          }
-          
-         },
-         
-      ),
-    );
+    return Consumer<ThemeService>(builder: (context, themeService, child) {
+      return MaterialApp(
+        theme: AppTheme.lightTheme,
+        darkTheme: AppTheme.darkTheme,
+        themeMode: themeService.isDarkModeOn? ThemeMode.dark: ThemeMode.light,
+        home: FutureBuilder(
+          future: _determinePosition(),
+          builder: (context, snap) {
+            if (snap.hasData) {
+              return BlocProvider(
+                create: (context) => WeatherBloc()..add(GetWeatherData()),
+                child: const HomePage(),
+              );
+            } else {
+              return Scaffold(
+                body: Container(
+                  child: Text('Loading data...'),
+                ),
+              );
+            }
+          },
+        ),
+      );
+    });
   }
 }
 
