@@ -45,7 +45,7 @@ class HomeBody extends StatelessWidget {
                     width: 350,
                     height: 350,
                     color: Colors.grey,
-                    child: const Center(child: Text('PLaceholder')),
+                    child: Image.asset('images/sun.png')
                   ),
                   const SizedBox(
                     height: 20,
@@ -83,7 +83,7 @@ class HomeBody extends StatelessWidget {
                         child: ListView.separated(
                           scrollDirection:
                               axisDirectionToAxis(AxisDirection.right),
-                          itemCount: 9,
+                          itemCount: state.weatherList.length,
                           padding: const EdgeInsets.all(8),
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
@@ -97,7 +97,6 @@ class HomeBody extends StatelessWidget {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Container(
-                                        color: Colors.blue,
                                         child: Text(
                                           DateFormat('EEEE').add_jm().format(
                                               state.weatherList[index].date!),
@@ -117,8 +116,8 @@ class HomeBody extends StatelessWidget {
                                         height: 5,
                                       ),
                                       Container(
-                                        color: Colors.green,
-                                        child: Text('29'),
+                                        child: Text(
+                                            '${state.weatherList[index].weatherMain}'),
                                       ),
                                     ],
                                   )
