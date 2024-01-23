@@ -9,32 +9,29 @@ class HomeBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final themeData = Theme.of(context);
     return Material(
       child: BlocBuilder<WeatherBloc, WeatherState>(
         builder: (context, state) {
           if (state is WeatherSuccess) {
             return Container(
-              decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                      end: Alignment.bottomCenter,
-                      begin: Alignment.topCenter,
-                      colors: [
-                    Colors.white,
-                    Colors.lightBlue[50]!,
-                    Colors.lightBlue[100]!,
-                    const Color.fromARGB(255, 81, 176, 253)
-                  ])),
+              decoration: BoxDecoration(color: Color(0xfff2fa4d6)),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Container(
-                    child: Center(
-                      child: Text(
-                        ' ${state.weather.areaName}',
-                        style: TextStyle(
-                            fontSize: 20, fontWeight: FontWeight.bold),
+                  
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    child: Container(
+                      width: double.infinity,
+                      child: Row(
+                        children: [
+                          Icon(Icons.location_on),
+                          Text(
+                            ' ${state.weather.areaName}',
+                            style: const TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.start,
+                          ),
+                        ],
                       ),
                     ),
                   ),
@@ -42,10 +39,11 @@ class HomeBody extends StatelessWidget {
                     height: 20,
                   ),
                   Container(
-                      width: 350,
-                      height: 350,
+                      width: 250,
+                      height: 250,
                       color: Colors.grey,
-                      child: getWeatherIcon(state.weather.weatherConditionCode)),
+                      child:
+                          getWeatherIcon(state.weather.weatherConditionCode)),
                   const SizedBox(
                     height: 20,
                   ),
@@ -61,7 +59,7 @@ class HomeBody extends StatelessWidget {
                             fontSize: 20, fontWeight: FontWeight.bold)),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 25,
                   ),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -156,7 +154,7 @@ class HomeBody extends StatelessWidget {
         //Regen
         debugPrint('Regen');
         return Image.asset('');
-       
+
       case (>= 600 && <= 622):
         //Schnee
         debugPrint('Schnee');
@@ -170,9 +168,8 @@ class HomeBody extends StatelessWidget {
         debugPrint('bewölkt');
         return Image.asset('');
       default:
-      debugPrint('error');
-       return Image.asset('');
+        debugPrint('error');
+        return Image.asset('');
     }
-    
   }
 }

@@ -10,15 +10,17 @@ class HomePage extends StatelessWidget {
       height: double.infinity,
       child: Scaffold(
           appBar: AppBar(
-            title: Center(
-                child: Text(getDaytime(),
-                    style: TextStyle(
-                        fontSize: 38,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.black))),
-            backgroundColor: Colors.white,
+            title: Text(
+              getDaytime(),
+              style: const TextStyle(
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black),
+              textAlign: TextAlign.start,
+            ),
+            backgroundColor: Color(0xfff2fa4d6),
           ),
-          body: HomeBody()),
+          body: const HomeBody()),
     );
   }
 
@@ -29,7 +31,7 @@ class HomePage extends StatelessWidget {
       return 'good morning';
     } else if (nowTime.hour >= 12 && nowTime.hour < 18) {
       return 'good afternoon';
-    }else if (nowTime.hour >= 18 && nowTime.hour < 24) {
+    } else if (nowTime.hour >= 18 && nowTime.hour < 24) {
       return 'good evening';
     } else {
       return 'hello';

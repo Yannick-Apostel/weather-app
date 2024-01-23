@@ -15,6 +15,7 @@ class AppTheme {
   static final Color lightDelOrClr = const Color(0xff5EEBE0);
   static final Color lightOprand = const Color(0xff78F0BE);
   static final Color lightNum = const Color(0xff5EC8EB);
+  static final Color _lightBackground = const Color(0xfff2fa4d6);
 
   static final TextStyle _lightHeadingText = TextStyle(
     color: _lightOnPrimary,
@@ -46,6 +47,7 @@ class AppTheme {
       useMaterial3: true,
       scaffoldBackgroundColor: _lightPrimaryColor,
       colorScheme: ColorScheme.light(
+        background: _lightBackground,
           primary: _lightOnPrimary,
           onPrimary: _lightOnPrimary,
           secondary: lightDelOrClr,
@@ -57,6 +59,7 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
       scaffoldBackgroundColor: _darkPrimaryColor,
       colorScheme: ColorScheme.dark(
+        
           primary: _lightOnPrimary,
           onPrimary: _darkOnPrimaryColor,
           secondary: darkDelOrClr,
