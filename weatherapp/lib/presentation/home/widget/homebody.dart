@@ -42,11 +42,10 @@ class HomeBody extends StatelessWidget {
                     height: 20,
                   ),
                   Container(
-                    width: 350,
-                    height: 350,
-                    color: Colors.grey,
-                    child: Image.asset('images/sun.png')
-                  ),
+                      width: 350,
+                      height: 350,
+                      color: Colors.grey,
+                      child: getWeatherIcon(state.weather.weatherConditionCode)),
                   const SizedBox(
                     height: 20,
                   ),
@@ -112,7 +111,6 @@ class HomeBody extends StatelessWidget {
                                         height: 40,
                                         child: Text('ICON Placeholder'),
                                       ),
-                                     
                                       Container(
                                         child: Text(
                                             '${state.weatherList[index].weatherMain}'),
@@ -142,5 +140,39 @@ class HomeBody extends StatelessWidget {
         },
       ),
     );
+  }
+
+  Image getWeatherIcon(code) {
+    switch (code) {
+      case (>= 200 && < 233):
+        //Gewitter
+        debugPrint('Gewitter');
+        return Image.asset('');
+      case (>= 300 && <= 321):
+        //Nieselregen
+        debugPrint('Nieselregen');
+        return Image.asset('');
+      case (>= 500 && <= 531):
+        //Regen
+        debugPrint('Regen');
+        return Image.asset('');
+       
+      case (>= 600 && <= 622):
+        //Schnee
+        debugPrint('Schnee');
+        return Image.asset('');
+      case (800):
+        //klar
+        debugPrint('klar');
+        return Image.asset('');
+      case (>= 801 && <= 804):
+        //bewölkt
+        debugPrint('bewölkt');
+        return Image.asset('');
+      default:
+      debugPrint('error');
+       return Image.asset('');
+    }
+    
   }
 }
