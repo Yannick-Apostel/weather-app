@@ -10,15 +10,15 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
+   
     return Material(
       child: BlocBuilder<WeatherBloc, WeatherState>(
         builder: (context, state) {
           if (state is WeatherSuccess) {
             return Container(
-              decoration: BoxDecoration(color: Color(0xfff2fa4d6)),
+              decoration: const BoxDecoration(color: Color(0xfff2fa4d6)),
               child: Column(
                 children: [
-                  
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 8),
                     child: Container(
@@ -29,7 +29,8 @@ class HomeBody extends StatelessWidget {
                           Text(
                             ' ${state.weather.areaName}',
                             style: const TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold), textAlign: TextAlign.start,
+                                fontSize: 20, fontWeight: FontWeight.bold),
+                            textAlign: TextAlign.start,
                           ),
                         ],
                       ),
@@ -41,9 +42,11 @@ class HomeBody extends StatelessWidget {
                   Container(
                       width: 250,
                       height: 250,
-                      color: Colors.grey,
+                      
                       child:
-                          getWeatherIcon(state.weather.weatherConditionCode)),
+                      
+                          getWeatherIcon(state.weather.weatherConditionCode)
+                          ),
                   const SizedBox(
                     height: 20,
                   ),
@@ -62,11 +65,11 @@ class HomeBody extends StatelessWidget {
                     height: 25,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8),
+                    padding: const EdgeInsets.symmetric(horizontal: 5),
                     child: Container(
                         width: double.infinity,
                         color: Colors.transparent,
-                        child: Text(
+                        child: const Text(
                           'Next days',
                           style: TextStyle(
                               fontSize: 20, fontWeight: FontWeight.bold),
@@ -81,10 +84,10 @@ class HomeBody extends StatelessWidget {
                           scrollDirection:
                               axisDirectionToAxis(AxisDirection.right),
                           itemCount: state.weatherList.length,
-                          padding: const EdgeInsets.all(8),
+                          padding: const EdgeInsets.all( 6),
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
-                              padding: const EdgeInsets.all(8.0),
+                              padding: const EdgeInsets.all( 6),
                               child: Container(
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8),
@@ -100,7 +103,7 @@ class HomeBody extends StatelessWidget {
                                           textAlign: TextAlign.center,
                                         ),
                                       ),
-                                      SizedBox(
+                                      const SizedBox(
                                         height: 5,
                                       ),
                                       Container(
@@ -112,7 +115,10 @@ class HomeBody extends StatelessWidget {
                                       Container(
                                         child: Text(
                                             '${state.weatherList[index].weatherMain}'),
+                                            
                                       ),
+                                      
+                                      
                                     ],
                                   )
                                   //child: Text('${state.weatherList[index].weatherMain}'),
@@ -132,7 +138,7 @@ class HomeBody extends StatelessWidget {
             );
           } else {
             return Container(
-              child: Text('Error'),
+              child: const Text('Error'),
             );
           }
         },
@@ -145,28 +151,28 @@ class HomeBody extends StatelessWidget {
       case (>= 200 && < 233):
         //Gewitter
         debugPrint('Gewitter');
-        return Image.asset('');
+        return Image.asset('assets/images/thunderstorm.png');
       case (>= 300 && <= 321):
         //Nieselregen
         debugPrint('Nieselregen');
-        return Image.asset('');
+        return Image.asset('assets/images/rain.png');
       case (>= 500 && <= 531):
         //Regen
         debugPrint('Regen');
-        return Image.asset('');
+        return Image.asset('assets/images/rain.png');
 
       case (>= 600 && <= 622):
         //Schnee
         debugPrint('Schnee');
-        return Image.asset('');
+        return Image.asset('assets/images/snow.png');
       case (800):
         //klar
         debugPrint('klar');
-        return Image.asset('');
+        return Image.asset('assets/images/sun.png');
       case (>= 801 && <= 804):
         //bewölkt
         debugPrint('bewölkt');
-        return Image.asset('');
+        return Image.asset('assets/images/clouds.png');
       default:
         debugPrint('error');
         return Image.asset('');
