@@ -6,6 +6,7 @@ import 'package:weatherapp/application/bloc/weather_bloc.dart';
 import 'package:weatherapp/application/theme_service.dart';
 import 'package:weatherapp/presentation/home/homepage.dart';
 import 'package:geolocator/geolocator.dart';
+import 'package:weatherapp/presentation/home/widget/errorContainer.dart';
 
 void main() {
   runApp(ChangeNotifierProvider(
@@ -35,8 +36,18 @@ class MyApp extends StatelessWidget {
               );
             } else {
               return Scaffold(
-                body: Container(
-                  child: Text('Loading data...'),
+                body: Center(
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        child: Text('Loading'),
+                      ),
+                      Container(
+                        child: CircularProgressIndicator(),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }

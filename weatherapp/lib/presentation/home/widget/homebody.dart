@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:weatherapp/application/bloc/weather_bloc.dart';
 import 'package:weatherapp/presentation/home/widget/actionButton.dart';
+import 'package:weatherapp/presentation/home/widget/errorContainer.dart';
 
 class HomeBody extends StatelessWidget {
   const HomeBody({super.key});
@@ -136,7 +137,7 @@ class HomeBody extends StatelessWidget {
             );
           } else {
             return Container(
-              child: const Text('Error'),
+              child: const ErrorContainer(),
             );
           }
         },
