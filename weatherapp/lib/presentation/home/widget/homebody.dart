@@ -10,7 +10,7 @@ class HomeBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeData = Theme.of(context);
-   
+
     return Material(
       child: BlocBuilder<WeatherBloc, WeatherState>(
         builder: (context, state) {
@@ -40,13 +40,14 @@ class HomeBody extends StatelessWidget {
                     height: 20,
                   ),
                   Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(8),
+                        color: Color.fromARGB(255, 84, 187, 231),
+                      ),
                       width: 250,
                       height: 250,
-                      
                       child:
-                      
-                          getWeatherIcon(state.weather.weatherConditionCode)
-                          ),
+                          getWeatherIcon(state.weather.weatherConditionCode)),
                   const SizedBox(
                     height: 20,
                   ),
@@ -84,10 +85,10 @@ class HomeBody extends StatelessWidget {
                           scrollDirection:
                               axisDirectionToAxis(AxisDirection.right),
                           itemCount: state.weatherList.length,
-                          padding: const EdgeInsets.all( 6),
+                          padding: const EdgeInsets.all(6),
                           itemBuilder: (BuildContext context, int index) {
                             return Padding(
-                              padding: const EdgeInsets.all( 6),
+                              padding: const EdgeInsets.all(6),
                               child: Container(
                                   decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(8),
@@ -107,18 +108,15 @@ class HomeBody extends StatelessWidget {
                                         height: 5,
                                       ),
                                       Container(
-                                        color: Colors.grey,
+                                        
                                         width: 40,
                                         height: 40,
-                                        child: Text('ICON Placeholder'),
+                                        child:  getWeatherIcon(state.weatherList[index].weatherConditionCode),
                                       ),
                                       Container(
                                         child: Text(
                                             '${state.weatherList[index].weatherMain}'),
-                                            
                                       ),
-                                      
-                                      
                                     ],
                                   )
                                   //child: Text('${state.weatherList[index].weatherMain}'),
