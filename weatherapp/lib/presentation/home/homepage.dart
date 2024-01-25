@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
                   color: Colors.black),
               textAlign: TextAlign.start,
             ),
-            backgroundColor: Color(0xfff2fa4d6),
+            backgroundColor: Colors.white,
           ),
           body: const HomeBody()),
     );

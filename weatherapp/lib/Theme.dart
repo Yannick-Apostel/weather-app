@@ -19,16 +19,11 @@ class AppTheme {
 
   static final TextStyle _lightHeadingText = TextStyle(
     color: _lightOnPrimary,
-    fontFamily: "Rubik",
     fontSize: 20,
-    fontWeight: FontWeight.bold,
   );
   static final TextStyle _lightBodyText = TextStyle(
     color: _lightOnPrimary,
-    fontFamily: "Rubik",
-    fontStyle: FontStyle.italic,
     fontSize: 16,
-    fontWeight: FontWeight.bold,
   );
 
   static final TextStyle _darkHeadingText =
@@ -47,7 +42,7 @@ class AppTheme {
       useMaterial3: true,
       scaffoldBackgroundColor: _lightPrimaryColor,
       colorScheme: ColorScheme.light(
-        background: _lightBackground,
+          background: _lightBackground,
           primary: _lightOnPrimary,
           onPrimary: _lightOnPrimary,
           secondary: lightDelOrClr,
@@ -59,7 +54,6 @@ class AppTheme {
   static ThemeData darkTheme = ThemeData(
       scaffoldBackgroundColor: _darkPrimaryColor,
       colorScheme: ColorScheme.dark(
-        
           primary: _lightOnPrimary,
           onPrimary: _darkOnPrimaryColor,
           secondary: darkDelOrClr,
