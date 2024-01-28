@@ -77,8 +77,114 @@ class HomeBody extends StatelessWidget {
                               ])
                         ],
                       )),
-                  const SizedBox(
-                    height: 200,
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Container(
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          
+                        ),
+                        width: 350,
+                        height: 200,
+                        child: const Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text('min temp',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black)),
+                                    SizedBox(
+                                      width: 135,
+                                    ),
+                                    Text('max temp',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black))
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text('23°C',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black)),
+                                    SizedBox(
+                                      width: 175,
+                                    ),
+                                    Text('20°C',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black))
+                                  ],
+                                ),
+                              ],
+                            ),
+                             Padding(
+                              padding: EdgeInsets.symmetric(vertical: 5.0),
+                              child: Divider(
+                                color: Colors.grey,
+                              ),
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text('sunset',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black)),
+                                    SizedBox(
+                                      width: 155,
+                                    ),
+                                    Text('sunrise',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black))
+                                  ],
+                                ),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.start,
+                              children: [
+                                Row(
+                                  children: [
+                                    Text('23:12',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black)),
+                                    SizedBox(
+                                      width: 170,
+                                    ),
+                                    Text('05:12',
+                                        style: TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                            color: Colors.black))
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ],
+                        )),
                   ),
                   Column(
                     children: [
