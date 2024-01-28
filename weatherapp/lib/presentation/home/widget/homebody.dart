@@ -86,7 +86,7 @@ class HomeBody extends StatelessWidget {
                         ),
                         width: 350,
                         height: 200,
-                        child: const Column(
+                        child:  Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
@@ -116,7 +116,7 @@ class HomeBody extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    Text('23°C',
+                                    Text('${state.weather.tempMax!.celsius!.round()}°C',
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w500,
@@ -124,7 +124,7 @@ class HomeBody extends StatelessWidget {
                                     SizedBox(
                                       width: 175,
                                     ),
-                                    Text('20°C',
+                                    Text('${state.weather.tempMin!.celsius!.round()}°C',
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w500,
@@ -166,15 +166,19 @@ class HomeBody extends StatelessWidget {
                               children: [
                                 Row(
                                   children: [
-                                    Text('23:12',
+                                    Text(DateFormat('')
+                                            .add_jm()
+                                            .format(state.weather.sunset!),
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w500,
                                             color: Colors.black)),
                                     SizedBox(
-                                      width: 170,
+                                      width: 135,
                                     ),
-                                    Text('05:12',
+                                    Text(DateFormat('')
+                                            .add_jm()
+                                            .format(state.weather.sunrise!),
                                         style: TextStyle(
                                             fontSize: 18,
                                             fontWeight: FontWeight.w500,
