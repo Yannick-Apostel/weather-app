@@ -26,7 +26,7 @@ class HomeBody extends StatelessWidget {
                       width: double.infinity,
                       child: Row(
                         children: [
-                          Icon(Icons.location_on),
+                          const Icon(Icons.location_on),
                           Text(
                             ' ${state.weather.areaName}',
                             style: const TextStyle(
@@ -62,7 +62,7 @@ class HomeBody extends StatelessWidget {
                       child: Column(
                         children: [
                           getWeatherIcon(state.weather.weatherConditionCode),
-                          SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                           Row(
@@ -70,211 +70,248 @@ class HomeBody extends StatelessWidget {
                               children: [
                                 Text(
                                     "${state.weather.weatherMain} • ${state.weather.temperature!.celsius!.round()}°C",
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                         fontSize: 36,
                                         fontWeight: FontWeight.bold,
                                         color: Colors.white)),
                               ])
                         ],
                       )),
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          
-                        ),
-                        width: 350,
-                        height: 200,
-                        child:  Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text('min temp',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black)),
-                                    SizedBox(
-                                      width: 135,
-                                    ),
-                                    Text('max temp',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black))
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text('${state.weather.tempMax!.celsius!.round()}°C',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black)),
-                                    SizedBox(
-                                      width: 175,
-                                    ),
-                                    Text('${state.weather.tempMin!.celsius!.round()}°C',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black))
-                                  ],
-                                ),
-                              ],
-                            ),
-                             Padding(
-                              padding: EdgeInsets.symmetric(vertical: 5.0),
-                              child: Divider(
-                                color: Colors.grey,
-                              ),
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text('sunset',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black)),
-                                    SizedBox(
-                                      width: 155,
-                                    ),
-                                    Text('sunrise',
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black))
-                                  ],
-                                ),
-                              ],
-                            ),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Row(
-                                  children: [
-                                    Text(DateFormat('')
-                                            .add_jm()
-                                            .format(state.weather.sunset!),
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black)),
-                                    SizedBox(
-                                      width: 135,
-                                    ),
-                                    Text(DateFormat('')
-                                            .add_jm()
-                                            .format(state.weather.sunrise!),
-                                        style: TextStyle(
-                                            fontSize: 18,
-                                            fontWeight: FontWeight.w500,
-                                            color: Colors.black))
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
-                        )),
+                  const SizedBox(
+                    height: 25,
                   ),
-                  Column(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 5),
-                        child: Container(
-                            width: double.infinity,
-                            child: const Text(
-                              'Next days',
-                              style: TextStyle(
-                                  fontSize: 20, fontWeight: FontWeight.bold),
-                              textAlign: TextAlign.start,
-                            )),
-                      ),
-                      SizedBox(
-                        height: 150,
-                        child: Expanded(
-                          child: Center(
-                            child: Container(
-                              height: 150,
-                              child: ListView.separated(
-                                scrollDirection:
-                                    axisDirectionToAxis(AxisDirection.right),
-                                itemCount: state.weatherList.length,
-                                padding: const EdgeInsets.all(6),
-                                itemBuilder: (BuildContext context, int index) {
-                                  return Padding(
-                                    padding: const EdgeInsets.all(6),
-                                    child: Container(
-                                        decoration: BoxDecoration(
-                                            borderRadius:
-                                                BorderRadius.circular(8),
-                                            color: Colors.white,
-                                            boxShadow: [
-                                              BoxShadow(
-                                                  blurRadius: 2,
-                                                  color: Colors.grey.shade400,
-                                                  offset: Offset(5, 5))
-                                            ]),
-                                        width: 100,
-                                        child: Column(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          children: [
-                                            Container(
-                                              child: Text(
-                                                DateFormat('EEEE')
-                                                    .add_jm()
-                                                    .format(state
-                                                        .weatherList[index]
-                                                        .date!),
-                                                textAlign: TextAlign.center,
-                                              ),
-                                            ),
-                                            const SizedBox(
-                                              height: 5,
-                                            ),
-                                            Container(
-                                              width: 40,
-                                              height: 40,
-                                              child: getWeatherIcon(state
-                                                  .weatherList[index]
-                                                  .weatherConditionCode),
-                                            ),
-                                            Container(
-                                              child: Text(
-                                                  '${state.weatherList[index].weatherMain}'),
-                                            ),
-                                          ],
-                                        )
-                                        //child: Text('${state.weatherList[index].weatherMain}'),
-
-                                        ),
-                                  );
-                                },
-                                separatorBuilder:
-                                    (BuildContext context, int index) {
-                                  return const Divider();
-                                },
-                              ),
+                  Container(
+                    width: 350,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 25,
+                              color: Colors.blue,
                             ),
+                            const SizedBox(
+                              height: 5,
+                              width: 15,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Sunrise',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                Text(
+                                  DateFormat('')
+                                      .add_jm()
+                                      .format(state.weather.sunrise!),
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 25,
+                              color: Colors.blue,
+                            ),
+                            const SizedBox(
+                              height: 5,
+                              width: 15,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Sunset',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                Text(
+                                  DateFormat('')
+                                      .add_jm()
+                                      .format(state.weather.sunset!),
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const Padding(
+                    padding:
+                        EdgeInsets.symmetric(vertical: 5.0, horizontal: 30),
+                    child: Divider(
+                      color: Colors.grey,
+                    ),
+                  ),
+                  Container(
+                    width: 350,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 25,
+                              color: Colors.blue,
+                            ),
+                            const SizedBox(
+                              height: 5,
+                              width: 15,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Temp Max',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                Text(
+                                  '${state.weather.tempMax!.celsius!.round()}°C',
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Container(
+                              height: 25,
+                              width: 25,
+                              color: Colors.blue,
+                            ),
+                            const SizedBox(
+                              height: 5,
+                              width: 15,
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                const Text(
+                                  'Temp Min',
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w300),
+                                ),
+                                const SizedBox(
+                                  height: 3,
+                                ),
+                                Text(
+                                  '${state.weather.tempMin!.celsius!.round()}°C',
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 25,
+                  ),
+                  const Text(
+                    'Next days',
+                    style: TextStyle(fontWeight: FontWeight.w400),
+                  ),
+                  SizedBox(
+                    height: 150,
+                    child: Expanded(
+                      child: Center(
+                        child: Container(
+                          height: 150,
+                          child: ListView.separated(
+                            scrollDirection:
+                                axisDirectionToAxis(AxisDirection.right),
+                            itemCount: state.weatherList.length,
+                            padding: const EdgeInsets.all(6),
+                            itemBuilder: (BuildContext context, int index) {
+                              return Padding(
+                                padding: const EdgeInsets.all(6),
+                                child: Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Colors.white,
+                                        boxShadow: [
+                                          BoxShadow(
+                                              blurRadius: 2,
+                                              color: Colors.grey.shade400,
+                                              offset: Offset(5, 5))
+                                        ]),
+                                    width: 100,
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: [
+                                        Container(
+                                          child: Text(
+                                            DateFormat('EEEE').add_jm().format(
+                                                state.weatherList[index].date!),
+                                            textAlign: TextAlign.center,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 5,
+                                        ),
+                                        Container(
+                                          width: 40,
+                                          height: 40,
+                                          child: getWeatherIcon(state
+                                              .weatherList[index]
+                                              .weatherConditionCode),
+                                        ),
+                                        Container(
+                                          child: Text(
+                                              '${state.weatherList[index].weatherMain}'),
+                                        ),
+                                      ],
+                                    )
+                                    //child: Text('${state.weatherList[index].weatherMain}'),
+
+                                    ),
+                              );
+                            },
+                            separatorBuilder:
+                                (BuildContext context, int index) {
+                              return const Divider();
+                            },
                           ),
                         ),
-                      )
-                    ],
-                  ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             );
